@@ -7,13 +7,8 @@ public class StatementPrinter {
     private class Tragedy{
 
         private static final int baseAmount = 40000;
-        private final Performance performance;
 
-        public Tragedy(Performance performance){
-            this.performance = performance;
-        }
-
-        private int getAmount() {
+        private int getAmount(Performance performance) {
             if (performance.audience > 30) {
                 return  baseAmount + 1000 * (performance.audience - 30);
             }
@@ -59,7 +54,7 @@ public class StatementPrinter {
 
             switch (play.type) {
                 case "tragedy":
-                    thisAmount = new Tragedy(perf).getAmount();
+                    thisAmount = new Tragedy().getAmount(perf);
                     break;
                 case "comedy":
                     thisAmount = new Comedy(perf).getAmount();
@@ -67,7 +62,6 @@ public class StatementPrinter {
                 default:
                     throw new Error("unknown type: ${play.type}");
             }
-
             totalAmount += thisAmount;
 
             result += String.format("  %s: %s (%s seats)\n", play.name, frmt.format(thisAmount / 100), perf.audience);
