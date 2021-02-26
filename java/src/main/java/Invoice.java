@@ -11,10 +11,6 @@ public class Invoice implements Iterable<Performance>{
         this.performances = performances;
     }
 
-    public String customer() {
-        return customer;
-    }
-
     @Override
     public Iterator<Performance> iterator() {
         return performances.iterator();

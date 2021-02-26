@@ -4,7 +4,14 @@ import java.util.Map;
 
 public class StatementPrinter {
 
-    public String print(Invoice invoice, Map<String, Play> plays) {
+    public String print(Invoice invoice, Map<String, Play> plays){
+        if (null == invoice || null == plays || plays.isEmpty()){
+            throw new IllegalArgumentException("Parameters null or empty");
+        }
+        return printInternal(invoice, plays);
+    }
+
+    private String printInternal(Invoice invoice, Map<String, Play> plays) {
         var totalAmount = 0;
         var volumeCredits = 0;
         var result = invoice.formatCustomerStatement();
