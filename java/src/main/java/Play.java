@@ -9,10 +9,10 @@ public abstract class Play {
     public abstract int getAmount(Performance perf);
 
     public int getVolumeCredits(Performance perf){
-        return getBaseVolumeCredit(perf);
+        return internalGetBaseVolumeCredit(perf);
     }
 
-    protected int getBaseVolumeCredit(Performance perf) {
-        return Math.max(perf.audience - 30, 0);
+    protected int internalGetBaseVolumeCredit(Performance perf) {
+        return Math.max(perf.audience() - 30, 0);
     }
 }

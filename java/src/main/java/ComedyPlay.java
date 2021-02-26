@@ -13,15 +13,15 @@ public class ComedyPlay extends Play{
 
     @Override
     public int getVolumeCredits(Performance perf) {
-        return getBaseVolumeCredit(perf) + (int) Math.floor(perf.audience / 5);
+        return internalGetBaseVolumeCredit(perf) + (int) Math.floor(perf.audience() / 5);
     }
 
     private int getComedyAmount(Performance perf) {
         int thisAmount = 0;
-        if (perf.audience > 20) {
-            thisAmount += 10000 + 500 * (perf.audience - 20);
+        if (perf.audience() > 20) {
+            thisAmount += 10000 + 500 * (perf.audience() - 20);
         }
-        thisAmount += 300 * perf.audience;
+        thisAmount += 300 * perf.audience();
         return thisAmount;
     }
 }
