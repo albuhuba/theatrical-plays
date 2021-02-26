@@ -1,12 +1,22 @@
+import java.util.Iterator;
 import java.util.List;
 
-public class Invoice {
+public class Invoice implements Iterable<Performance>{
 
-    public String customer;
-    public List<Performance> performances;
+    private final String customer;
+    private final List<Performance> performances;
 
     public Invoice(String customer, List<Performance> performances) {
         this.customer = customer;
         this.performances = performances;
+    }
+
+    public String customer() {
+        return customer;
+    }
+
+    @Override
+    public Iterator<Performance> iterator() {
+        return performances.iterator();
     }
 }
