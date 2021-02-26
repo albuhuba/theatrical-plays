@@ -19,4 +19,8 @@ public class Invoice implements Iterable<Performance>{
     public Iterator<Performance> iterator() {
         return performances.iterator();
     }
+
+    public String formatCustomerStatement() {
+        return String.format("Statement for %s\n", customer);
+    }
 }

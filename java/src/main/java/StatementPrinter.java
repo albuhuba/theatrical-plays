@@ -7,17 +7,16 @@ public class StatementPrinter {
     public String print(Invoice invoice, Map<String, Play> plays) {
         var totalAmount = 0;
         var volumeCredits = 0;
-        var result = String.format("Statement for %s\n", invoice.customer());
+        var result = invoice.formatCustomerStatement();
 
         NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
 
         for (var perf : invoice) {
             var play = plays.get(perf.playID());
-            var thisAmount = play.getAmount(perf);
-            totalAmount += thisAmount;
-
-            result += String.format("  %s: %s (%s seats)\n", play.name(), formatter.format(thisAmount / 100), perf.audience());
+            totalAmount += play.getAmount(perf);
             volumeCredits += play.getVolumeCredits(perf);
+
+            result += play.formatAmount(perf);
 
         }
 

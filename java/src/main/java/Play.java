@@ -1,3 +1,6 @@
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public abstract class Play {
 
     private final String name;
@@ -18,5 +21,10 @@ public abstract class Play {
 
     public String name() {
         return name;
+    }
+
+    public String formatAmount(Performance perf){
+        NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
+        return String.format("  %s: %s (%s seats)\n", name(), formatter.format(getAmount(perf) / 100), perf.audience());
     }
 }
