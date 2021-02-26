@@ -16,8 +16,10 @@ public class StatementPrinter {
             totalAmount += play.getAmount(perf);
             volumeCredits += play.getVolumeCredits(perf);
 
-            result += play.formatAmount(perf);
-
+        }
+        for (Performance performance : invoice) {
+            var play = plays.get(performance.playID());
+            result += play.formatAmount(performance);
         }
 
         result += String.format("Amount owed is %s\n", formatter.format(totalAmount / 100));
