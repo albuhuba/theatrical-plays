@@ -19,13 +19,8 @@ public class StatementPrinter {
 
     private class Comedy{
         private static final int baseAmount = 30000;
-        private final Performance performance;
 
-        public Comedy(Performance performance) {
-            this.performance = performance;
-        }
-
-        public int getAmount() {
+        public int getAmount(Performance performance) {
             return baseAmount + getComedyAmount(performance);
         }
 
@@ -57,7 +52,7 @@ public class StatementPrinter {
                     thisAmount = new Tragedy().getAmount(perf);
                     break;
                 case "comedy":
-                    thisAmount = new Comedy(perf).getAmount();
+                    thisAmount = new Comedy().getAmount(perf);
                     break;
                 default:
                     throw new Error("unknown type: ${play.type}");
