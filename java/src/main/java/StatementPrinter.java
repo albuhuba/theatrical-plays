@@ -17,10 +17,7 @@ public class StatementPrinter {
 
             switch (play.type) {
                 case "tragedy":
-                    thisAmount = 40000;
-                    if (perf.audience > 30) {
-                        thisAmount += 1000 * (perf.audience - 30);
-                    }
+                    thisAmount = 40000 + getTragedyAmount(perf, 30, 1000 * (perf.audience - 30));
                     break;
                 case "comedy":
                     thisAmount = 30000;
@@ -45,6 +42,15 @@ public class StatementPrinter {
         result += String.format("Amount owed is %s\n", frmt.format(totalAmount / 100));
         result += String.format("You earned %s credits\n", volumeCredits);
         return result;
+    }
+
+    private int getTragedyAmount(Performance perf, int i2, int i3) {
+        int thisAmount =0;
+
+        if (perf.audience > i2) {
+            thisAmount += i3;
+        }
+        return thisAmount;
     }
 
 }
