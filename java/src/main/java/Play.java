@@ -1,10 +1,18 @@
-public class Play {
+public abstract class Play {
 
     public String name;
-    public String type;
 
-    public Play(String name, String type) {
+    public Play(String name) {
         this.name = name;
-        this.type = type;
+    }
+
+    public abstract int getAmount(Performance perf);
+
+    public int getVolumeCredits(Performance perf){
+        return getBaseVolumeCredit(perf);
+    }
+
+    protected int getBaseVolumeCredit(Performance perf) {
+        return Math.max(perf.audience - 30, 0);
     }
 }
