@@ -6,9 +6,20 @@ public class StatementPrinter {
 
     private class Tragedy{
 
-        private int baseAmount = 40000;
-        public Tragedy(){
+        private static final int baseAmount = 40000;
+        private final Performance performance;
+
+        public Tragedy(Performance performance){
+            this.performance = performance;
         }
+
+        private int getAmount() {
+            if (performance.audience > 30) {
+                return  baseAmount + 1000 * (performance.audience - 30);
+            }
+            return baseAmount;
+        }
+
     }
 
     public String print(Invoice invoice, Map<String, Play> plays) {
@@ -24,8 +35,7 @@ public class StatementPrinter {
 
             switch (play.type) {
                 case "tragedy":
-                    //new Tragedy().getAmount();
-                    thisAmount = 40000 + getTragedyAmount(perf, 30, 1000 * (perf.audience - 30));
+                    thisAmount = new Tragedy(perf).getAmount();
                     break;
                 case "comedy":
                     thisAmount = 30000 + getComedyAmount(perf);
@@ -34,11 +44,11 @@ public class StatementPrinter {
                     throw new Error("unknown type: ${play.type}");
             }
 
-
-            volumeCredits += getVolumeCredits(perf, play);
             totalAmount += thisAmount;
 
             result += String.format("  %s: %s (%s seats)\n", play.name, frmt.format(thisAmount / 100), perf.audience);
+
+            volumeCredits += getVolumeCredits(perf, play);
 
         }
         result += String.format("Amount owed is %s\n", frmt.format(totalAmount / 100));
@@ -70,13 +80,5 @@ public class StatementPrinter {
         return thisAmount;
     }
 
-    private int getTragedyAmount(Performance perf, int i2, int i3) {
-        int thisAmount =0;
-
-        if (perf.audience > i2) {
-            thisAmount += i3;
-        }
-        return thisAmount;
-    }
 
 }
