@@ -20,10 +20,6 @@ public class Invoice implements Iterable<Performance>{
         return String.format("Statement for %s\n", customer);
     }
 
-    public void withPerformance(Performance performance) {
-        this.performances.add(performance);
-    }
-
     public void addPerformances(List<Performance> performances){
         this.performances.addAll(performances);
     }
