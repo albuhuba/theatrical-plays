@@ -16,7 +16,7 @@ public class StatementPrinter {
             var thisAmount = play.getAmount(perf);
             totalAmount += thisAmount;
 
-            result += String.format("  %s: %s (%s seats)\n", play.name, formatter.format(thisAmount / 100), perf.audience());
+            result += String.format("  %s: %s (%s seats)\n", play.name(), formatter.format(thisAmount / 100), perf.audience());
             volumeCredits += play.getVolumeCredits(perf);
 
         }
