@@ -50,7 +50,7 @@ public class StatementPrinterTests {
 
         private String customer;
 
-        private List<Performance> performances = new ArrayList<>();
+        private final List<Performance> performances = new ArrayList<>();
 
         public InvoiceBuilder customer(String customer) {
             this.customer = customer;

@@ -1,4 +1,4 @@
-public class ComedyPlay extends Play{
+public class ComedyPlay extends Play {
 
     private static final int baseAmount = 30000;
 
@@ -8,7 +8,7 @@ public class ComedyPlay extends Play{
 
     @Override
     public int getAmount(Performance performance) {
-        return baseAmount + getComedyAmount(performance);
+        return performance.getComedyAmount(baseAmount);
     }
 
     @Override
@@ -16,12 +16,5 @@ public class ComedyPlay extends Play{
         return internalGetBaseVolumeCredit(perf) + (int) Math.floor(perf.audience() / 5);
     }
 
-    private int getComedyAmount(Performance perf) {
-        int thisAmount = 0;
-        if (perf.audience() > 20) {
-            thisAmount += 10000 + 500 * (perf.audience() - 20);
-        }
-        thisAmount += 300 * perf.audience();
-        return thisAmount;
-    }
+
 }
