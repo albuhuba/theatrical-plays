@@ -23,7 +23,7 @@ public abstract class AbstractPlay {
         return Math.max(perf.audience() - 30, 0);
     }
 
-    public String formatAmount(Performance perf){
+    public String formatAmount(Performance perf) {
         NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
         return String.format("  %s: %s (%s seats)\n", name, formatter.format(getAmount(perf) / 100), perf.audience());
     }

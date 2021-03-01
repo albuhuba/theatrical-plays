@@ -16,11 +16,11 @@ public class Invoice {
         this.customer = customer;
     }
 
-    public void addPerformances(List<Performance> performances){
+    public void addPerformances(List<Performance> performances) {
         this.performances.addAll(performances);
     }
 
-    public void addPlays(Map<String, AbstractPlay> plays){
+    public void addPlays(Map<String, AbstractPlay> plays) {
         this.plays.putAll(plays);
     }
 
@@ -29,7 +29,7 @@ public class Invoice {
     }
 
     public String formatPlayResults() {
-        return performances.stream().map(p->plays.get(p.playID()).formatAmount(p)).collect(Collectors.joining(""));
+        return performances.stream().map(p -> plays.get(p.playID()).formatAmount(p)).collect(Collectors.joining(""));
     }
 
     public int getTotalAmount() {

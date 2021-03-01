@@ -1,9 +1,11 @@
 import model.Invoice;
 
-public class StatementPrinter {
+// Service
+// stateless
+public class StatementPrinterService {
 
-    public String print(Invoice invoice){
-        if (null == invoice){
+    public String print(Invoice invoice) {
+        if (null == invoice) {
             throw new IllegalArgumentException("model.Invoice can't be null!");
         }
         return printInternal(invoice);

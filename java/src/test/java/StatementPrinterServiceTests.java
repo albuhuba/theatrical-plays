@@ -11,7 +11,10 @@ import java.util.Map;
 
 import static org.approvaltests.Approvals.verify;
 
-public class StatementPrinterTests {
+public class StatementPrinterServiceTests {
+
+    // 1 instance is present in the context
+    private final StatementPrinterService statementPrinterService = new StatementPrinterService();
 
     @Test
     void exampleStatement() {
@@ -25,8 +28,7 @@ public class StatementPrinterTests {
                 .play("othello", new TragedyPlay("Othello"))
                 .build();
 
-        StatementPrinter statementPrinter = new StatementPrinter();
-        var result = statementPrinter.print(invoice);
+        var result = statementPrinterService.print(invoice);
 
         verify(result);
     }
@@ -41,9 +43,9 @@ public class StatementPrinterTests {
                 .play("as-like", new PastoralPlay("As You Like It"))
                 .build();
 
-        StatementPrinter statementPrinter = new StatementPrinter();
+        StatementPrinterService statementPrinterService = new StatementPrinterService();
         Assertions.assertThrows(Error.class, () -> {
-            statementPrinter.print(invoice);
+            statementPrinterService.print(invoice);
         });
     }
 
