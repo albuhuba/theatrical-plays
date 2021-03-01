@@ -1,19 +1,13 @@
-import java.text.NumberFormat;
-import java.util.Locale;
-import java.util.Map;
-
 public class StatementPrinter {
 
     public String print(Invoice invoice){
         if (null == invoice){
-            throw new IllegalArgumentException("Parameters null or empty");
+            throw new IllegalArgumentException("Invoice can't be null!");
         }
-        var totalAmount = invoice.getTotalAmount();
-        var volumeCredits = invoice.getVolumeCredits();
-        return printInternal(invoice, totalAmount, volumeCredits);
+        return printInternal(invoice);
     }
 
-    private String printInternal(Invoice invoice, int totalAmount, int volumeCredits) {
+    private String printInternal(Invoice invoice) {
         return invoice.formatInvoice();
     }
 
