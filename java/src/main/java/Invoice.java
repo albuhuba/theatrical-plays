@@ -1,8 +1,5 @@
 import java.text.NumberFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Invoice {
@@ -39,11 +36,12 @@ public class Invoice {
         return performances.stream().mapToInt(p -> plays.get(p.playID()).getVolumeCredits(p)).sum();
     }
 
-    public String formatTotalAmount(int totalAmount, NumberFormat formatter) {
-        return String.format("Amount owed is %s\n", formatter.format(totalAmount / 100));
+    public String formatTotalAmount() {
+        NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
+        return String.format("Amount owed is %s\n", formatter.format(getTotalAmount() / 100));
     }
 
-    public String formatVolumeCredits(int volumeCredits) {
-        return String.format("You earned %s credits\n", volumeCredits);
+    public String formatVolumeCredits() {
+        return String.format("You earned %s credits\n", getVolumeCredits());
     }
 }

@@ -14,12 +14,10 @@ public class StatementPrinter {
     }
 
     private String printInternal(Invoice invoice, int totalAmount, int volumeCredits) {
-        NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
-
         var result = invoice.formatCustomerStatement();
         result += invoice.formatPlayResults();
-        result += invoice.formatTotalAmount(totalAmount, formatter);
-        result += invoice.formatVolumeCredits(volumeCredits);
+        result += invoice.formatTotalAmount();
+        result += invoice.formatVolumeCredits();
 
         return result;
     }
