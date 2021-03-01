@@ -1,4 +1,8 @@
-public class TragedyPlay extends Play{
+package play;
+
+import model.Performance;
+
+public class TragedyPlay extends AbstractPlay {
 
     public TragedyPlay(String name) {
         super(name);

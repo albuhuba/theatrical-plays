@@ -1,3 +1,7 @@
+package model;
+
+import play.AbstractPlay;
+
 import java.text.NumberFormat;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -5,7 +9,7 @@ import java.util.stream.Collectors;
 public class Invoice {
 
     private final String customer;
-    private final Map<String, Play> plays = new HashMap<>();
+    private final Map<String, AbstractPlay> plays = new HashMap<>();
     private final List<Performance> performances = new ArrayList<>();
 
     public Invoice(String customer) {
@@ -16,7 +20,7 @@ public class Invoice {
         this.performances.addAll(performances);
     }
 
-    public void addPlays(Map<String,Play> plays){
+    public void addPlays(Map<String, AbstractPlay> plays){
         this.plays.putAll(plays);
     }
 

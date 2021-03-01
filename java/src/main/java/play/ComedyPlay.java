@@ -1,4 +1,8 @@
-public class ComedyPlay extends Play {
+package play;
+
+import model.Performance;
+
+public class ComedyPlay extends AbstractPlay {
 
     private static final int baseAmount = 30000;
 

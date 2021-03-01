@@ -1,4 +1,8 @@
-public class PastoralPlay extends Play{
+package play;
+
+import model.Performance;
+
+public class PastoralPlay extends AbstractPlay {
     public PastoralPlay(String name) {
         super(name);
     }

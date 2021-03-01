@@ -1,4 +1,8 @@
-public class HistoryPlay extends Play{
+package play;
+
+import model.Performance;
+
+public class HistoryPlay extends AbstractPlay {
     public HistoryPlay(String name) {
         super(name);
     }

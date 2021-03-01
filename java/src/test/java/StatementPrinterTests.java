@@ -1,5 +1,8 @@
+import model.Invoice;
+import model.Performance;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import play.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -49,7 +52,7 @@ public class StatementPrinterTests {
         private String customer;
 
         private final List<Performance> performances;
-        private final Map<String, Play> plays;
+        private final Map<String, AbstractPlay> plays;
 
         public InvoiceBuilder(){
             this.performances = new ArrayList<>();
@@ -66,7 +69,7 @@ public class StatementPrinterTests {
             return this;
         }
 
-        public InvoiceBuilder play(String name, Play play){
+        public InvoiceBuilder play(String name, AbstractPlay play){
             this.plays.put(name, play);
             return this;
         }
