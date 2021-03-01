@@ -14,12 +14,7 @@ public class StatementPrinter {
     }
 
     private String printInternal(Invoice invoice, int totalAmount, int volumeCredits) {
-        var result = invoice.formatCustomerStatement();
-        result += invoice.formatPlayResults();
-        result += invoice.formatTotalAmount();
-        result += invoice.formatVolumeCredits();
-
-        return result;
+        return invoice.formatInvoice();
     }
 
 }

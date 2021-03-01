@@ -44,4 +44,12 @@ public class Invoice {
     public String formatVolumeCredits() {
         return String.format("You earned %s credits\n", getVolumeCredits());
     }
+
+    public String formatInvoice() {
+        return new StringBuilder(formatCustomerStatement())
+                .append(formatPlayResults())
+                .append(formatTotalAmount())
+                .append(formatVolumeCredits())
+                .toString();
+    }
 }
