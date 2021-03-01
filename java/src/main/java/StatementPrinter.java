@@ -8,14 +8,13 @@ public class StatementPrinter {
         if (null == invoice || null == plays || plays.isEmpty()){
             throw new IllegalArgumentException("Parameters null or empty");
         }
-        return printInternal(invoice, plays);
-    }
-
-    private String printInternal(Invoice invoice, Map<String, Play> plays) {
-        NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
-
         var totalAmount = invoice.getTotalAmount(plays);
         var volumeCredits = invoice.getVolumeCredits(plays);
+        return printInternal(invoice, plays, totalAmount, volumeCredits);
+    }
+
+    private String printInternal(Invoice invoice, Map<String, Play> plays, int totalAmount, int volumeCredits) {
+        NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
 
         var result = invoice.formatCustomerStatement();
         result += invoice.formatPlayResults(plays);

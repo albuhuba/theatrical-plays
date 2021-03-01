@@ -4,18 +4,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class Invoice implements Iterable<Performance>{
+public class Invoice {
 
     private final String customer;
     private final List<Performance> performances = new ArrayList<>();
 
     public Invoice(String customer) {
         this.customer = customer;
-    }
-
-    @Override
-    public Iterator<Performance> iterator() {
-        return performances.iterator();
     }
 
     public String formatCustomerStatement() {
