@@ -18,10 +18,18 @@ public class StatementPrinter {
 
         var result = invoice.formatCustomerStatement();
         result += invoice.formatPlayResults();
-        result += String.format("Amount owed is %s\n", formatter.format(totalAmount / 100));
-        result += String.format("You earned %s credits\n", volumeCredits);
+        result += formatTotalAmount(totalAmount, formatter);
+        result += formatVolumeCredits(volumeCredits);
 
         return result;
+    }
+
+    private String formatVolumeCredits(int volumeCredits) {
+        return String.format("You earned %s credits\n", volumeCredits);
+    }
+
+    private String formatTotalAmount(int totalAmount, NumberFormat formatter) {
+        return String.format("Amount owed is %s\n", formatter.format(totalAmount / 100));
     }
 
 
