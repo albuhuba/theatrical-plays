@@ -19,16 +19,8 @@ public class StatementPrinter {
         NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
 
         totalAmount = invoice.getTotalAmount(plays);
+        volumeCredits = invoice.getVolumeCredits(plays);
 
-        for (var perf : invoice) {
-            var play = plays.get(perf.playID());
-            volumeCredits += play.getVolumeCredits(perf);
-
-        }
-//        for (Performance performance : invoice) {
-//            var play = plays.get(performance.playID());
-//            result += play.formatAmount(performance);
-//        }
         result += invoice.formatPlayResults(plays);
 
         result += String.format("Amount owed is %s\n", formatter.format(totalAmount / 100));

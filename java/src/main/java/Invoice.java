@@ -33,4 +33,8 @@ public class Invoice implements Iterable<Performance>{
     public int getTotalAmount(Map<String,Play> plays) {
         return performances.stream().mapToInt(p -> plays.get(p.playID()).getAmount(p)).sum();
     }
+
+    public int getVolumeCredits(Map<String,Play> plays) {
+        return performances.stream().mapToInt(p -> plays.get(p.playID()).getVolumeCredits(p)).sum();
+    }
 }
