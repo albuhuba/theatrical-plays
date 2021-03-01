@@ -12,19 +12,16 @@ public class StatementPrinter {
     }
 
     private String printInternal(Invoice invoice, Map<String, Play> plays) {
-        var totalAmount = 0;
-        var volumeCredits = 0;
-        var result = invoice.formatCustomerStatement();
-
         NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
 
-        totalAmount = invoice.getTotalAmount(plays);
-        volumeCredits = invoice.getVolumeCredits(plays);
+        var totalAmount = invoice.getTotalAmount(plays);
+        var volumeCredits = invoice.getVolumeCredits(plays);
 
+        var result = invoice.formatCustomerStatement();
         result += invoice.formatPlayResults(plays);
-
         result += String.format("Amount owed is %s\n", formatter.format(totalAmount / 100));
         result += String.format("You earned %s credits\n", volumeCredits);
+
         return result;
     }
 
